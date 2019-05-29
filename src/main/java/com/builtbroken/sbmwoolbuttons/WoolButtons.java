@@ -1,19 +1,10 @@
 package com.builtbroken.sbmwoolbuttons;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockButton;
-import net.minecraft.block.SoundType;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -65,22 +56,10 @@ public class WoolButtons
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
-        event.getRegistry().register(new BlockWoolButton("wool_button_white"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_orange"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_magenta"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_light_blue"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_yellow"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_lime"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_pink"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_gray"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_silver"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_cyan"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_purple"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_blue"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_brown"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_green"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_red"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_black"));
+        for(EnumDyeColor color : EnumDyeColor.values())
+        {
+            event.getRegistry().register(new BlockWoolButton("wool_button_" + color.name()));
+        }
     }
 
     @SubscribeEvent
@@ -102,38 +81,5 @@ public class WoolButtons
         event.getRegistry().register(new ItemBlock(green).setRegistryName(green.getRegistryName()));
         event.getRegistry().register(new ItemBlock(red).setRegistryName(red.getRegistryName()));
         event.getRegistry().register(new ItemBlock(black).setRegistryName(black.getRegistryName()));
-    }
-
-    @SubscribeEvent
-    public static void onConfigChanged(final OnConfigChangedEvent event)
-    {
-        if(event.getModID().equals(MODID))
-            ConfigManager.sync(MODID, Config.Type.INSTANCE);
-    }
-
-    private static class BlockWoolButton extends BlockButton
-    {
-        public BlockWoolButton(String name)
-        {
-            super(true);
-
-            setRegistryName(PREFIX + name);
-            setTranslationKey(PREFIX + name);
-            setSoundType(SoundType.CLOTH);
-        }
-
-        @Override
-        protected void playClickSound(EntityPlayer player, World world, BlockPos pos)
-        {
-            if(WoolButtonsConfig.makeSound)
-                world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.6F);
-        }
-
-        @Override
-        protected void playReleaseSound(World world, BlockPos pos)
-        {
-            if(WoolButtonsConfig.makeSound)
-                world.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.5F);
-        }
     }
 }
