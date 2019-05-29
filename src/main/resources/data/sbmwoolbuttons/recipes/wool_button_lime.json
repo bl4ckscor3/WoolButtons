@@ -3,12 +3,11 @@
   "group": "wool_buttons",
   "ingredients": [
     {
-      "item": "minecraft:wool",
-	  "data": 13
+      "item": "minecraft:lime_wool"
     }
   ],
   "result": {
-    "item": "sbmwoolbuttons:wool_button_green",
+    "item": "sbmwoolbuttons:wool_button_lime",
     "count": 1
   }
 }

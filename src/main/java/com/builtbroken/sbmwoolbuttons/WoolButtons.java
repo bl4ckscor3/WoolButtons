@@ -3,24 +3,26 @@ package com.builtbroken.sbmwoolbuttons;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.SoundType;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.ConfigManager;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.registries.ObjectHolder;
 
-@Mod(modid=WoolButtons.MODID, name=WoolButtons.NAME, version=WoolButtons.VERSION, acceptedMinecraftVersions=WoolButtons.MC_VERSION)
-@EventBusSubscriber
+@Mod(WoolButtons.MODID)
+@EventBusSubscriber(modid=WoolButtons.MODID, bus=Bus.MOD)
 public class WoolButtons
 {
     public static final String MODID = "sbmwoolbuttons";
@@ -45,8 +47,8 @@ public class WoolButtons
     public static Block pink;
     @ObjectHolder(PREFIX + "wool_button_gray")
     public static Block gray;
-    @ObjectHolder(PREFIX + "wool_button_silver")
-    public static Block silver;
+    @ObjectHolder(PREFIX + "wool_button_light_gray")
+    public static Block light_gray;
     @ObjectHolder(PREFIX + "wool_button_cyan")
     public static Block cyan;
     @ObjectHolder(PREFIX + "wool_button_purple")
@@ -62,6 +64,15 @@ public class WoolButtons
     @ObjectHolder(PREFIX + "wool_button_black")
     public static Block black;
 
+    @ObjectHolder(PREFIX + "silence")
+    public static SoundEvent silence;
+
+    public WoolButtons()
+    {
+        if(FMLLoader.getDist() == Dist.CLIENT)
+            ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, WoolButtonsConfig.CONFIG_SPEC);
+    }
+
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
@@ -73,7 +84,7 @@ public class WoolButtons
         event.getRegistry().register(new BlockWoolButton("wool_button_lime"));
         event.getRegistry().register(new BlockWoolButton("wool_button_pink"));
         event.getRegistry().register(new BlockWoolButton("wool_button_gray"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_silver"));
+        event.getRegistry().register(new BlockWoolButton("wool_button_light_gray"));
         event.getRegistry().register(new BlockWoolButton("wool_button_cyan"));
         event.getRegistry().register(new BlockWoolButton("wool_button_purple"));
         event.getRegistry().register(new BlockWoolButton("wool_button_blue"));
@@ -86,54 +97,47 @@ public class WoolButtons
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
-        event.getRegistry().register(new ItemBlock(white).setRegistryName(white.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(orange).setRegistryName(orange.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(magenta).setRegistryName(magenta.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(light_blue).setRegistryName(light_blue.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(yellow).setRegistryName(yellow.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(lime).setRegistryName(lime.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(pink).setRegistryName(pink.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(gray).setRegistryName(gray.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(silver).setRegistryName(silver.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(cyan).setRegistryName(cyan.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(purple).setRegistryName(purple.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(blue).setRegistryName(blue.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(brown).setRegistryName(brown.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(green).setRegistryName(green.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(red).setRegistryName(red.getRegistryName()));
-        event.getRegistry().register(new ItemBlock(black).setRegistryName(black.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(white, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(white.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(orange, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(orange.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(magenta, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(magenta.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(light_blue, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(light_blue.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(yellow, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(yellow.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(lime, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(lime.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(pink, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(pink.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(gray, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(gray.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(light_gray, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(light_gray.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(cyan, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(cyan.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(purple, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(purple.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(blue, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(blue.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(brown, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(brown.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(green, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(green.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(red, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(red.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(black, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(black.getRegistryName()));
     }
 
     @SubscribeEvent
-    public static void onConfigChanged(final OnConfigChangedEvent event)
+    public static void registerSounds(RegistryEvent.Register<SoundEvent> event)
     {
-        if(event.getModID().equals(MODID))
-            ConfigManager.sync(MODID, Config.Type.INSTANCE);
+        ResourceLocation rl = new ResourceLocation(MODID, "silence");
+
+        event.getRegistry().register(new SoundEvent(rl).setRegistryName(rl));
     }
 
     private static class BlockWoolButton extends BlockButton
     {
         public BlockWoolButton(String name)
         {
-            super(true);
+            super(true, Block.Properties.create(Material.CIRCUITS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
 
             setRegistryName(PREFIX + name);
-            setTranslationKey(PREFIX + name);
-            setSoundType(SoundType.CLOTH);
         }
 
         @Override
-        protected void playClickSound(EntityPlayer player, World world, BlockPos pos)
+        protected SoundEvent getSoundEvent(boolean isPressed)
         {
-            if(WoolButtonsConfig.makeSound)
-                world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.6F);
-        }
-
-        @Override
-        protected void playReleaseSound(World world, BlockPos pos)
-        {
-            if(WoolButtonsConfig.makeSound)
-                world.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.5F);
+            if(WoolButtonsConfig.CONFIG.makeSound.get())
+                return isPressed ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF;
+            return silence; //can't be null, would crash
         }
     }
 }

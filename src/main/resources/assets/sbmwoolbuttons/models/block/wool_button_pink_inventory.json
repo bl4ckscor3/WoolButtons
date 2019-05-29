@@ -1,6 +1,7 @@
 {
     "parent": "block/button_inventory",
     "textures": {
-        "texture": "blocks/wool_colored_pink"
+        "texture": "block/pink_wool"
     }
 }
+

@@ -1,6 +1,7 @@
 /bin
 /out
 /run
+/logs
 *.classpath
 *.project
 .settings/

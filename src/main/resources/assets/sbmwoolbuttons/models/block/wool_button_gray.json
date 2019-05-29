@@ -1,6 +1,7 @@
 {
     "parent": "block/button",
     "textures": {
-        "texture": "blocks/wool_colored_gray"
+        "texture": "block/gray_wool"
     }
 }
+

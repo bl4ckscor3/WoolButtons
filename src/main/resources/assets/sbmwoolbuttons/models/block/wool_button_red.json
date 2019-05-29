@@ -1,6 +1,7 @@
 {
     "parent": "block/button",
     "textures": {
-        "texture": "blocks/wool_colored_red"
+        "texture": "block/red_wool"
     }
 }
+

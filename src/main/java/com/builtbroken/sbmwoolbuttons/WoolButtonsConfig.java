@@ -1,13 +1,29 @@
 package com.builtbroken.sbmwoolbuttons;
 
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.Config.Comment;
-import net.minecraftforge.common.config.Config.Name;
+import org.apache.commons.lang3.tuple.Pair;
 
-@Config(modid=WoolButtons.MODID)
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
+
 public class WoolButtonsConfig
 {
-    @Name("make_sound")
-    @Comment("True if the buttons should make a sound when pressed, false otherwhise")
-    public static boolean makeSound = false;
+    public static final ForgeConfigSpec CONFIG_SPEC;
+    public static final WoolButtonsConfig CONFIG;
+
+    public final BooleanValue makeSound;
+
+    static
+    {
+        Pair<WoolButtonsConfig,ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(WoolButtonsConfig::new);
+
+        CONFIG_SPEC = specPair.getRight();
+        CONFIG = specPair.getLeft();
+    }
+
+    WoolButtonsConfig(ForgeConfigSpec.Builder builder)
+    {
+        makeSound = builder
+                .comment("True if the buttons should make a sound when pressed, false otherwhise")
+                .define("make_sound", false);
+    }
 }
