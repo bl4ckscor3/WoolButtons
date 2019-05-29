@@ -1,10 +1,7 @@
 package com.builtbroken.sbmwoolbuttons;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockButton;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
@@ -76,22 +73,10 @@ public class WoolButtons
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
-        event.getRegistry().register(new BlockWoolButton("wool_button_white"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_orange"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_magenta"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_light_blue"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_yellow"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_lime"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_pink"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_gray"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_light_gray"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_cyan"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_purple"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_blue"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_brown"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_green"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_red"));
-        event.getRegistry().register(new BlockWoolButton("wool_button_black"));
+        for(EnumDyeColor color : EnumDyeColor.values())
+        {
+            event.getRegistry().register(new BlockWoolButton("wool_button_" + color.name()));
+        }
     }
 
     @SubscribeEvent
@@ -121,23 +106,5 @@ public class WoolButtons
         ResourceLocation rl = new ResourceLocation(MODID, "silence");
 
         event.getRegistry().register(new SoundEvent(rl).setRegistryName(rl));
-    }
-
-    private static class BlockWoolButton extends BlockButton
-    {
-        public BlockWoolButton(String name)
-        {
-            super(true, Block.Properties.create(Material.CIRCUITS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
-
-            setRegistryName(PREFIX + name);
-        }
-
-        @Override
-        protected SoundEvent getSoundEvent(boolean isPressed)
-        {
-            if(WoolButtonsConfig.CONFIG.makeSound.get())
-                return isPressed ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF;
-            return silence; //can't be null, would crash
-        }
     }
 }
