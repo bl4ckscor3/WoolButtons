@@ -1,16 +1,23 @@
-tile.sbmwoolbuttons:wool_button_white.name=White Wool Button
-tile.sbmwoolbuttons:wool_button_orange.name=Orange Wool Button
-tile.sbmwoolbuttons:wool_button_magenta.name=Magenta Wool Button
-tile.sbmwoolbuttons:wool_button_light_blue.name=Light Blue Wool Button
-tile.sbmwoolbuttons:wool_button_yellow.name=Yellow Wool Button
-tile.sbmwoolbuttons:wool_button_lime.name=Lime Wool Button
-tile.sbmwoolbuttons:wool_button_pink.name=Pink Wool Button
-tile.sbmwoolbuttons:wool_button_gray.name=Gray Wool Button
-tile.sbmwoolbuttons:wool_button_silver.name=Light Gray Wool Button
-tile.sbmwoolbuttons:wool_button_cyan.name=Cyan Wool Button
-tile.sbmwoolbuttons:wool_button_purple.name=Purple Wool Button
-tile.sbmwoolbuttons:wool_button_blue.name=Blue Wool Button
-tile.sbmwoolbuttons:wool_button_brown.name=Brown Wool Button
-tile.sbmwoolbuttons:wool_button_green.name=Green Wool Button
-tile.sbmwoolbuttons:wool_button_red.name=Red Wool Button
-tile.sbmwoolbuttons:wool_button_black.name=Black Wool Button
+
+# Blocks
+tile.sbmwoolbuttons:wool.button.white.name=White Wool Button
+tile.sbmwoolbuttons:wool.button.orange.name=Orange Wool Button
+tile.sbmwoolbuttons:wool.button.magenta.name=Magenta Wool Button
+tile.sbmwoolbuttons:wool.button.light_blue.name=Light Blue Wool Button
+tile.sbmwoolbuttons:wool.button.yellow.name=Yellow Wool Button
+tile.sbmwoolbuttons:wool.button.lime.name=Lime Wool Button
+tile.sbmwoolbuttons:wool.button.pink.name=Pink Wool Button
+tile.sbmwoolbuttons:wool.button.gray.name=Gray Wool Button
+tile.sbmwoolbuttons:wool.button.silver.name=Light Gray Wool Button
+tile.sbmwoolbuttons:wool.button.cyan.name=Cyan Wool Button
+tile.sbmwoolbuttons:wool.button.purple.name=Purple Wool Button
+tile.sbmwoolbuttons:wool.button.blue.name=Blue Wool Button
+tile.sbmwoolbuttons:wool.button.brown.name=Brown Wool Button
+tile.sbmwoolbuttons:wool.button.green.name=Green Wool Button
+tile.sbmwoolbuttons:wool.button.red.name=Red Wool Button
+tile.sbmwoolbuttons:wool.button.black.name=Black Wool Button
+
+# Config
+config.sbmwoolbuttons:sound.enable.title=Enable Sound
+config.sbmwoolbuttons:sound.enable.sheep.title=Enable Sheep Sounds
+config.sbmwoolbuttons:sound.sheep.chance.title=Sheep Sounds Chance

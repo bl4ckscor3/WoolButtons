@@ -2,7 +2,7 @@
 {
   "modid": "sbmwoolbuttons",
   "name": "[SBM] Wool Buttons",
-  "description": "",
+  "description": "Simple wool versions of the vanilla buttons. Contains option to disable sound.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

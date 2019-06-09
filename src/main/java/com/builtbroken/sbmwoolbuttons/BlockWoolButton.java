@@ -10,26 +10,34 @@ import net.minecraft.world.World;
 
 public class BlockWoolButton extends BlockButton
 {
-    public BlockWoolButton(String name)
+    public BlockWoolButton()
     {
         super(true);
-
-        setRegistryName(WoolButtons.PREFIX + name);
-        setTranslationKey(WoolButtons.PREFIX + name);
         setSoundType(SoundType.CLOTH);
     }
 
     @Override
     protected void playClickSound(EntityPlayer player, World world, BlockPos pos)
     {
-        if(WoolButtonsConfig.makeSound)
-            world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.6F);
+        if (ConfigMain.enableSound)
+        {
+            if (ConfigMain.enableDemonSheep && Math.random() > ConfigMain.demonSheepChance)
+            {
+                world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_AMBIENT, SoundCategory.BLOCKS, 0.3F + (float) (Math.random() * 0.2f), 0.6F + (float) (Math.random() * 0.1f));
+            }
+            else
+            {
+                world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.6F);
+            }
+        }
     }
 
     @Override
     protected void playReleaseSound(World world, BlockPos pos)
     {
-        if(WoolButtonsConfig.makeSound)
-            world.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.5F);
+        if (ConfigMain.enableSound)
+        {
+            world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.5F);
+        }
     }
 }
