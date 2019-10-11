@@ -19,5 +19,3 @@ tile.sbmwoolbuttons:wool.button.black.name=Black Wool Button
 
 # Config
 config.sbmwoolbuttons:sound.enable.title=Enable Sound
-config.sbmwoolbuttons:sound.enable.sheep.title=Enable Sheep Sounds
-config.sbmwoolbuttons:sound.sheep.chance.title=Sheep Sounds Chance
