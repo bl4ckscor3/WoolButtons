@@ -8,7 +8,7 @@ loaderVersion="[28,)"
 	description='''Adds buttons made of wool.'''
 	issueTrackerURL="https://github.com/bl4ckscor3/WoolButtons/issues"
 	displayURL="http://minecraft.curseforge.com/projects/wool-buttons"
-	authors="bl4ckscor3"
+	authors="bl4ckscor3, DarkGuardsman"
 
 [[dependencies.sbmwoolbuttons]]
     modId="forge"
