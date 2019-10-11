@@ -1,32 +1,24 @@
 package bl4ckscor3.mod.woolbuttons;
 
-import net.minecraft.block.BlockButton;
+import net.minecraft.block.AbstractButtonBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.block.material.Material;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 
-public class BlockWoolButton extends BlockButton
+public class BlockWoolButton extends AbstractButtonBlock
 {
 	public BlockWoolButton()
 	{
-		super(true);
-		setSoundType(SoundType.CLOTH);
+		super(true, Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
 	}
 
 	@Override
-	protected void playClickSound(EntityPlayer player, World world, BlockPos pos)
+	protected SoundEvent getSoundEvent(boolean isPressed)
 	{
-		if(Configuration.enableSound)
-			world.playSound(player, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.6F);
-	}
-
-	@Override
-	protected void playReleaseSound(World world, BlockPos pos)
-	{
-		if(Configuration.enableSound)
-			world.playSound(null, pos, SoundEvents.BLOCK_WOOD_BUTTON_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.5F);
+		if(Configuration.CONFIG.makeSound.get())
+			return isPressed ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF;
+		return WoolButtons.silence; //can't be null, would crash
 	}
 }

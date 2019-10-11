@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+
+[[mods]]
+	modId="sbmwoolbuttons"
+	version="v1.1"
+	displayName="Wool Buttons"
+	description='''Adds buttons made of wool.'''
+	issueTrackerURL="https://github.com/bl4ckscor3/WoolButtons/issues"
+	displayURL="http://minecraft.curseforge.com/projects/wool-buttons"
+	authors="bl4ckscor3"
+
+[[dependencies.sbmwoolbuttons]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.sbmwoolbuttons]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14,1.15)"
+    ordering="NONE"
+    side="BOTH"

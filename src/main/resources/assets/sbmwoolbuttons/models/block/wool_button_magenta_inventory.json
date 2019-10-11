@@ -1,6 +1,6 @@
 {
     "parent": "block/button_inventory",
     "textures": {
-        "texture": "blocks/wool_colored_magenta"
+        "texture": "block/magenta_wool"
     }
 }

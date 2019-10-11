@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wool_buttons",
+  "ingredients": [
+    {
+      "item": "minecraft:light_blue_wool"
+    }
+  ],
+  "result": {
+    "item": "sbmwoolbuttons:wool_button_light_blue",
+    "count": 1
+  }
+}
