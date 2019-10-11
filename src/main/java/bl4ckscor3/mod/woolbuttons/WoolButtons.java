@@ -34,7 +34,6 @@ public class WoolButtons
 		modMeta.description = "Simple wool versions of the vanilla buttons. Contains option to enable/disable sound.";
 	}
 
-
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
