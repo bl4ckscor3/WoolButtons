@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[28,)"
+loaderVersion="[30,)"
 
 [[mods]]
 	modId="sbmwoolbuttons"
@@ -13,13 +13,13 @@ loaderVersion="[28,)"
 [[dependencies.sbmwoolbuttons]]
     modId="forge"
     mandatory=true
-    versionRange="[28,)"
+    versionRange="[30,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.sbmwoolbuttons]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14,1.15)"
+    versionRange="[1.15,1.16)"
     ordering="NONE"
     side="BOTH"
