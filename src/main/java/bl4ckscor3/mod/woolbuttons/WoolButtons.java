@@ -23,8 +23,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public class WoolButtons
 {
 	public static final String MODID = "sbmwoolbuttons";
-	public static final String PREFIX = MODID + ":";
-	@ObjectHolder(PREFIX + "silence")
+	@ObjectHolder(MODID + ":silence")
 	public static SoundEvent silence;
 
 	public WoolButtons()

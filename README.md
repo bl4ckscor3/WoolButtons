@@ -1,3 +1,3 @@
 # Wool Buttons
 
-A Minecraft mod that adds buttons made of wool. Download here: https://minecraft.curseforge.com/projects/wool-buttons
+A Minecraft mod that adds buttons made of wool. Download here: https://www.curseforge.com/minecraft/mc-mods/wool-buttons
