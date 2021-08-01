@@ -49,7 +49,7 @@ public class WoolButtons
 			Block block = ForgeRegistries.BLOCKS.getValue(getName(color));
 
 			if(block != null)
-				event.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(block.getRegistryName()));
+				event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(block.getRegistryName()));
 		}
 	}
 

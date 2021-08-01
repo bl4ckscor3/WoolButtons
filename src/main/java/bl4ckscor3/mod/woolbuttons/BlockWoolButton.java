@@ -11,14 +11,14 @@ public class BlockWoolButton extends AbstractButtonBlock
 {
 	public BlockWoolButton()
 	{
-		super(true, Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
+		super(true, Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOL));
 	}
 
 	@Override
-	protected SoundEvent getSoundEvent(boolean isPressed)
+	protected SoundEvent getSound(boolean isPressed)
 	{
 		if(Configuration.CONFIG.makeSound.get())
-			return isPressed ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF;
+			return isPressed ? SoundEvents.WOODEN_BUTTON_CLICK_ON : SoundEvents.WOODEN_BUTTON_CLICK_OFF;
 		return WoolButtons.silence; //can't be null, would crash
 	}
 }
