@@ -1,13 +1,13 @@
 package bl4ckscor3.mod.woolbuttons;
 
-import net.minecraft.block.AbstractButtonBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 
-public class BlockWoolButton extends AbstractButtonBlock
+public class BlockWoolButton extends ButtonBlock
 {
 	public BlockWoolButton()
 	{

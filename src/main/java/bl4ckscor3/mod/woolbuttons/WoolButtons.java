@@ -1,11 +1,11 @@
 package bl4ckscor3.mod.woolbuttons;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -49,7 +49,7 @@ public class WoolButtons
 			Block block = ForgeRegistries.BLOCKS.getValue(getName(color));
 
 			if(block != null)
-				event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(block.getRegistryName()));
+				event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(block.getRegistryName()));
 		}
 	}
 
