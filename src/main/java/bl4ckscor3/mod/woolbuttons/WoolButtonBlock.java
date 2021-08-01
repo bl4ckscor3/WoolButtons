@@ -7,9 +7,9 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 
-public class BlockWoolButton extends ButtonBlock
+public class WoolButtonBlock extends ButtonBlock
 {
-	public BlockWoolButton()
+	public WoolButtonBlock()
 	{
 		super(true, Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOL));
 	}

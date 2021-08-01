@@ -37,7 +37,7 @@ public class WoolButtons
 	{
 		for(Color color : Color.values())
 		{
-			event.getRegistry().register(new BlockWoolButton().setRegistryName(getName(color)));
+			event.getRegistry().register(new WoolButtonBlock().setRegistryName(getName(color)));
 		}
 	}
 
