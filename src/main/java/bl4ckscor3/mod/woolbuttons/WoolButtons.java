@@ -24,49 +24,57 @@ import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Mod(WoolButtons.MODID)
-@EventBusSubscriber(modid=WoolButtons.MODID, bus=Bus.MOD)
-public class WoolButtons
-{
+@EventBusSubscriber(modid = WoolButtons.MODID, bus = Bus.MOD)
+public class WoolButtons {
 	public static final String MODID = "sbmwoolbuttons";
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
 	public static final RegistryObject<SoundEvent> SILENCE = SOUND_EVENTS.register("silence", () -> new SoundEvent(new ResourceLocation(MODID, "silence")));
 
-	public WoolButtons()
-	{
+	public WoolButtons() {
 		SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-		if(FMLLoader.getDist() == Dist.CLIENT)
+		if (FMLLoader.getDist() == Dist.CLIENT)
 			ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Configuration.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
-	public static void onRegister(RegisterEvent event)
-	{
+	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.BLOCKS, helper -> {
-			for(Color color : Color.values())
-			{
+			for (Color color : Color.values()) {
 				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOL)));
 			}
 		});
 		event.register(Keys.ITEMS, helper -> {
-			for(Color color : Color.values())
-			{
+			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
 				Block block = ForgeRegistries.BLOCKS.getValue(name);
 
-				if(block != null)
+				if (block != null)
 					helper.register(name, new BlockItem(block, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 			}
 		});
 	}
 
-	public static ResourceLocation getName(Color color)
-	{
+	public static ResourceLocation getName(Color color) {
 		return new ResourceLocation(MODID, "wool_button_" + color.name().toLowerCase());
 	}
 
-	private static enum Color
-	{
-		WHITE, ORANGE, MAGENTA, LIGHT_BLUE, YELLOW, LIME, PINK, GRAY, LIGHT_GRAY, CYAN, PURPLE, BLUE, BROWN, GREEN, RED, BLACK;
+	private static enum Color {
+		WHITE,
+		ORANGE,
+		MAGENTA,
+		LIGHT_BLUE,
+		YELLOW,
+		LIME,
+		PINK,
+		GRAY,
+		LIGHT_GRAY,
+		CYAN,
+		PURPLE,
+		BLUE,
+		BROWN,
+		GREEN,
+		RED,
+		BLACK;
 	}
 }
