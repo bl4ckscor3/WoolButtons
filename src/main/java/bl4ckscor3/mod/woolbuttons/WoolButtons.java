@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,6 +37,7 @@ public class WoolButtons {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
 	public static final RegistryObject<SoundEvent> SILENCE = SOUND_EVENTS.register("silence", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MODID, "silence")));
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
+	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = new BlockSetType(MODID + ":wool", SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 
 	public WoolButtons() {
 		SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -46,7 +48,7 @@ public class WoolButtons {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.BLOCKS, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOL), 30, true, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
+				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
 			}
 		});
 		event.register(Keys.ITEMS, helper -> {
