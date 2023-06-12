@@ -15,8 +15,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -37,7 +36,7 @@ public class WoolButtons {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
 	public static final RegistryObject<SoundEvent> SILENCE = SOUND_EVENTS.register("silence", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MODID, "silence")));
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
-	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = new BlockSetType(MODID + ":wool", SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
 
 	public WoolButtons() {
 		SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -48,7 +47,7 @@ public class WoolButtons {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.BLOCKS, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of(Material.DECORATION).noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
+				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of().noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
 			}
 		});
 		event.register(Keys.ITEMS, helper -> {
@@ -67,10 +66,10 @@ public class WoolButtons {
 	}
 
 	@SubscribeEvent
-	public static void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event) {
-		if (event.getTab() == CreativeModeTabs.REDSTONE_BLOCKS)
+	public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
 			event.getEntries().putAfter(new ItemStack(Items.STONE_BUTTON), STACKS_FOR_CREATIVE_TABS.get(0), TabVisibility.PARENT_AND_SEARCH_TABS); //white only
-		else if (event.getTab() == CreativeModeTabs.COLORED_BLOCKS)
+		else if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
 			event.acceptAll(STACKS_FOR_CREATIVE_TABS);
 	}
 

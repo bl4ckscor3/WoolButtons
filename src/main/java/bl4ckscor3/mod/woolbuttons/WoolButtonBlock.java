@@ -12,7 +12,6 @@ public class WoolButtonBlock extends ButtonBlock {
 
 	@Override
 	protected SoundEvent getSound(boolean isPressed) {
-		System.out.println(Configuration.CONFIG.makeSound.get());
 		if (Configuration.CONFIG.makeSound.get())
 			return super.getSound(isPressed);
 
