@@ -3,8 +3,9 @@ package bl4ckscor3.mod.woolbuttons;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab.TabVisibility;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
@@ -21,39 +23,31 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.Mod.EventBusSubscriber;
 import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 import net.neoforged.neoforge.registries.RegisterEvent;
-import net.neoforged.neoforge.registries.RegistryObject;
 
 @Mod(WoolButtons.MODID)
 @EventBusSubscriber(modid = WoolButtons.MODID, bus = Bus.MOD)
 public class WoolButtons {
 	public static final String MODID = "sbmwoolbuttons";
-	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
-	public static final RegistryObject<SoundEvent> SILENCE = SOUND_EVENTS.register("silence", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MODID, "silence")));
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
 	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
 
 	public WoolButtons() {
-		SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
 	public static void onRegister(RegisterEvent event) {
-		event.register(Keys.BLOCKS, helper -> {
+		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolButtonBlock(Block.Properties.of().noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
+				helper.register(getName(color), new WoolButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
 			}
 		});
-		event.register(Keys.ITEMS, helper -> {
+		event.register(Registries.ITEM, helper -> {
 			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
-				Block block = ForgeRegistries.BLOCKS.getValue(name);
+				Block block = BuiltInRegistries.BLOCK.get(name);
 
 				if (block != null) {
 					BlockItem blockItem = new BlockItem(block, new Item.Properties());
@@ -77,7 +71,7 @@ public class WoolButtons {
 		return new ResourceLocation(MODID, "wool_button_" + color.name().toLowerCase());
 	}
 
-	private static enum Color {
+	private enum Color {
 		WHITE,
 		LIGHT_GRAY,
 		GRAY,
