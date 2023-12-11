@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockSetType.PressurePlateSensitivity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -31,7 +32,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 public class WoolButtons {
 	public static final String MODID = "sbmwoolbuttons";
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
-	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
+	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, true, true, PressurePlateSensitivity.EVERYTHING, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
 
 	public WoolButtons() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
@@ -41,7 +42,7 @@ public class WoolButtons {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30, true));
+				helper.register(getName(color), new WoolButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_BUTTON_BLOCK_SET_TYPE, 30));
 			}
 		});
 		event.register(Registries.ITEM, helper -> {

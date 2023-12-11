@@ -6,8 +6,8 @@ import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class WoolButtonBlock extends ButtonBlock {
-	public WoolButtonBlock(Properties properties, BlockSetType blockSetType, int ticksToStayPressed, boolean arrowsCanPress) {
-		super(properties, blockSetType, ticksToStayPressed, arrowsCanPress);
+	public WoolButtonBlock(Properties properties, BlockSetType blockSetType, int ticksToStayPressed) {
+		super(blockSetType, ticksToStayPressed, properties);
 	}
 
 	@Override
