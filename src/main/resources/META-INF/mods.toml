@@ -13,14 +13,14 @@ issueTrackerURL="https://github.com/bl4ckscor3/WoolButtons/issues"
 
 [[dependencies.sbmwoolbuttons]]
     modId="neoforge"
-    mandatory=true
+    type="required"
     versionRange="[20.3,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.sbmwoolbuttons]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="[1.20.3,1.21)"
     ordering="NONE"
     side="BOTH"

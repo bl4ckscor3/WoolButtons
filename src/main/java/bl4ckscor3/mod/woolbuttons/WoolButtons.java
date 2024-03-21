@@ -72,7 +72,7 @@ public class WoolButtons {
 		return new ResourceLocation(MODID, "wool_button_" + color.name().toLowerCase());
 	}
 
-	private enum Color {
+	public enum Color {
 		WHITE,
 		LIGHT_GRAY,
 		GRAY,
