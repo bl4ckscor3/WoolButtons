@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "wool_buttons",
+  "ingredients": [
+    {
+      "item": "minecraft:cyan_wool"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "sbmwoolbuttons:wool_button_cyan"
+  }
+}

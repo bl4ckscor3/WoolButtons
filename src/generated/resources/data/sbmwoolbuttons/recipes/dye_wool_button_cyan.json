@@ -1,0 +1,61 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool_buttons",
+  "ingredients": [
+    {
+      "item": "minecraft:cyan_dye"
+    },
+    [
+      {
+        "item": "sbmwoolbuttons:wool_button_white"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_light_gray"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_gray"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_black"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_brown"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_red"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_orange"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_yellow"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_lime"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_green"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_light_blue"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_blue"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_purple"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_magenta"
+      },
+      {
+        "item": "sbmwoolbuttons:wool_button_pink"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "sbmwoolbuttons:wool_button_cyan"
+  }
+}

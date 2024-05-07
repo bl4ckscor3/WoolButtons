@@ -43,3 +43,5 @@ changelog\.html
 SBM-Wool-Button\.txt
 
 .idea/
+
+src/generated/resources/.cache/
