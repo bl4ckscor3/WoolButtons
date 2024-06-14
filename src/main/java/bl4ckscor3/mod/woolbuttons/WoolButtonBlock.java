@@ -24,7 +24,7 @@ public class WoolButtonBlock extends ButtonBlock {
 		if (state.getValue(POWERED))
 			return InteractionResult.CONSUME;
 		else {
-			press(state, level, pos);
+			press(state, level, pos, player);
 			playSound(player, level, pos, true);
 
 			if (Configuration.CONFIG.triggerSculkSensors.get())

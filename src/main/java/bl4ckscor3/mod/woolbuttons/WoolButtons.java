@@ -73,7 +73,7 @@ public class WoolButtons {
 	}
 
 	public static ResourceLocation getName(Color color) {
-		return new ResourceLocation(MODID, "wool_button_" + color.name().toLowerCase());
+		return ResourceLocation.fromNamespaceAndPath(MODID, "wool_button_" + color.name().toLowerCase());
 	}
 
 	public enum Color {
