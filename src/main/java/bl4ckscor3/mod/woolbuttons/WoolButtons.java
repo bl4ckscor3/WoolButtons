@@ -67,7 +67,7 @@ public class WoolButtons {
 	@SubscribeEvent
 	public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
-			event.getEntries().putAfter(new ItemStack(Items.STONE_BUTTON), new ItemStack(ITEMS.get(Color.WHITE)), TabVisibility.PARENT_AND_SEARCH_TABS);
+			event.insertAfter(new ItemStack(Items.STONE_BUTTON), new ItemStack(ITEMS.get(Color.WHITE)), TabVisibility.PARENT_AND_SEARCH_TABS);
 		else if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
 			event.acceptAll(ITEMS.values().stream().map(ItemStack::new).toList());
 	}
