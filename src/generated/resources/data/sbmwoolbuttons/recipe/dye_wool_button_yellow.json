@@ -3,55 +3,23 @@
   "category": "building",
   "group": "wool_buttons",
   "ingredients": [
-    {
-      "item": "minecraft:yellow_dye"
-    },
+    "minecraft:yellow_dye",
     [
-      {
-        "item": "sbmwoolbuttons:wool_button_white"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_light_gray"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_gray"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_black"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_brown"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_red"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_orange"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_lime"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_green"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_cyan"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_light_blue"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_blue"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_purple"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_magenta"
-      },
-      {
-        "item": "sbmwoolbuttons:wool_button_pink"
-      }
+      "sbmwoolbuttons:wool_button_white",
+      "sbmwoolbuttons:wool_button_light_gray",
+      "sbmwoolbuttons:wool_button_gray",
+      "sbmwoolbuttons:wool_button_black",
+      "sbmwoolbuttons:wool_button_brown",
+      "sbmwoolbuttons:wool_button_red",
+      "sbmwoolbuttons:wool_button_orange",
+      "sbmwoolbuttons:wool_button_lime",
+      "sbmwoolbuttons:wool_button_green",
+      "sbmwoolbuttons:wool_button_cyan",
+      "sbmwoolbuttons:wool_button_light_blue",
+      "sbmwoolbuttons:wool_button_blue",
+      "sbmwoolbuttons:wool_button_purple",
+      "sbmwoolbuttons:wool_button_magenta",
+      "sbmwoolbuttons:wool_button_pink"
     ]
   ],
   "result": {

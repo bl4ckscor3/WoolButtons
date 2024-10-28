@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "wool_buttons",
   "ingredients": [
-    {
-      "item": "minecraft:white_wool"
-    }
+    "minecraft:white_wool"
   ],
   "result": {
     "count": 1,

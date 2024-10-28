@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "wool_buttons",
   "ingredients": [
-    {
-      "item": "minecraft:lime_wool"
-    }
+    "minecraft:lime_wool"
   ],
   "result": {
     "count": 1,

@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import bl4ckscor3.mod.woolbuttons.WoolButtons;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,17 +14,19 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class RecipeGenerator extends RecipeProvider {
-	public RecipeGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-		super(output, lookupProvider);
+	private final HolderGetter<Item> items;
+
+	public RecipeGenerator(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+		super(lookupProvider, output);
+		items = lookupProvider.lookupOrThrow(Registries.ITEM);
 	}
 
 	@Override
-	protected final void buildRecipes(RecipeOutput recipeOutput) {
+	protected final void buildRecipes() {
 		//@formatter:off
         List<Item> woolColors = List.of(
                 Items.WHITE_WOOL,
@@ -66,18 +70,34 @@ public class RecipeGenerator extends RecipeProvider {
 			Item button = buttons.get(i);
 
 			//@formatter:off
-        	ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, button)
+        	ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, button)
         	.group("wool_buttons")
 			.requires(woolColors.get(i))
 			.unlockedBy("has_wool", has(ItemTags.WOOL))
-			.save(recipeOutput);//, BuiltInRegistries.ITEM.getKey(button) + "_from_wool");
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, button)
+			.save(output);
+            ShapelessRecipeBuilder.shapeless(items, RecipeCategory.BUILDING_BLOCKS, button)
         	.group("wool_buttons")
             .requires(dye)
-            .requires(Ingredient.of(buttons.stream().filter(check -> !check.equals(button)).map(ItemStack::new)))
+            .requires(Ingredient.of(buttons.stream().filter(check -> !check.equals(button))))
             .unlockedBy("has_needed_dye", has(dye))
-            .save(recipeOutput, WoolButtons.MODID + ":dye_" + getItemName(button));
+            .save(output, WoolButtons.MODID + ":dye_" + getItemName(button));
 			//@formatter:on
+		}
+	}
+
+	public static final class Runner extends RecipeProvider.Runner {
+		public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+			super(output, lookupProvider);
+		}
+
+		@Override
+		protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+			return new RecipeGenerator(lookupProvider, output);
+		}
+
+		@Override
+		public String getName() {
+			return "Wool Buttons recipes";
 		}
 	}
 }

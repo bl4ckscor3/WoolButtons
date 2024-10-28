@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "wool_buttons",
   "ingredients": [
-    {
-      "item": "minecraft:purple_wool"
-    }
+    "minecraft:purple_wool"
   ],
   "result": {
     "count": 1,

@@ -30,7 +30,7 @@ public class WoolButtonBlock extends ButtonBlock {
 			if (Configuration.CONFIG.triggerSculkSensors.get())
 				level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
 
-			return InteractionResult.sidedSuccess(level.isClientSide);
+			return InteractionResult.SUCCESS;
 		}
 	}
 
