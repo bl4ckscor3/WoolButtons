@@ -1,0 +1,6 @@
+{
+	"model": {
+		"type": "minecraft:model",
+		"model": "sbmwoolbuttons:block/wool_button_cyan_inventory"
+	}
+}
