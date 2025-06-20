@@ -22,14 +22,13 @@ import net.minecraft.world.level.block.state.properties.BlockSetType.PressurePla
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 @Mod(WoolButtons.MODID)
-@EventBusSubscriber(modid = WoolButtons.MODID, bus = Bus.MOD)
+@EventBusSubscriber(modid = WoolButtons.MODID)
 public class WoolButtons {
 	public static final String MODID = "sbmwoolbuttons";
 	public static final BlockSetType WOOL_BUTTON_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, true, true, PressurePlateSensitivity.EVERYTHING, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
