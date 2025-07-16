@@ -14,5 +14,9 @@
     "block.sbmwoolbuttons.wool_button_brown": "Brown Wool Button",
     "block.sbmwoolbuttons.wool_button_green": "Green Wool Button",
     "block.sbmwoolbuttons.wool_button_red": "Red Wool Button",
-    "block.sbmwoolbuttons.wool_button_black": "Black Wool Button"
+    "block.sbmwoolbuttons.wool_button_black": "Black Wool Button",
+    "sbmwoolbuttons.configuration.make_sound": "Make sound",
+    "sbmwoolbuttons.configuration.make_sound.tooltip": "Enable to have wool buttons make a sound when pressed.",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors": "Trigger sculk sensors",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors.tooltip": "Enable to have pressing wool buttons trigger sculk sensors. If you want placing and breaking them to trigger sculk sensors, you need to remove the buttons from the minecraft:dampens_vibrations block tag."
 }

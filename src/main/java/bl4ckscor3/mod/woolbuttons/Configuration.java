@@ -21,7 +21,7 @@ public class Configuration {
 	Configuration(ModConfigSpec.Builder builder) {
 		//@formatter:off
 		makeSound = builder
-				.comment("True if the buttons should make a sound when pressed, false otherwise")
+				.comment("True if the buttons should make a sound when pressed, false otherwise.")
 				.define("make_sound", false);
 		triggerSculkSensors = builder
 				.comment("True if the buttons should trigger sculk sensors, false otherwise. This only applies to pressing the buttons.",
