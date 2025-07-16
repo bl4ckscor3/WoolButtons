@@ -14,5 +14,9 @@
     "block.sbmwoolbuttons.wool_button_brown": "Brauner Wolleknopf",
     "block.sbmwoolbuttons.wool_button_green": "Grüner Wolleknopf",
     "block.sbmwoolbuttons.wool_button_red": "Roter Wolleknopf",
-    "block.sbmwoolbuttons.wool_button_black": "Schwarzer Wolleknopf"
+    "block.sbmwoolbuttons.wool_button_black": "Schwarzer Wolleknopf",
+    "sbmwoolbuttons.configuration.make_sound": "Geräusch abspielen",
+    "sbmwoolbuttons.configuration.make_sound.tooltip": "Wenn aktiviert, machen Wolleknöpfe ein Geräusch, wenn sie gedrückt werden.",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors": "Sculk-Sensoren auslösen",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors.tooltip": "Wenn aktiviert, spüren Sculk-Sensoren das Drücken von Wolleknöpfen. Wenn du möchtest, dass auch das Platzieren und Zerbrechen von Wolleknöpfen Sculk-Sensoren auslöst, musst du die Knöpfe aus dem minecraft:dampens_vibrations Block-Tag entfernen."
 }
