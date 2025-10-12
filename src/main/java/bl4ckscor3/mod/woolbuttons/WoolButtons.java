@@ -44,7 +44,7 @@ public class WoolButtons {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
-				WoolButtonBlock block = new WoolButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_BUTTON_BLOCK_SET_TYPE, 30);
+				WoolButtonBlock block = new WoolButtonBlock(BlockBehaviour.Properties.of().noCollision().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_BUTTON_BLOCK_SET_TYPE, 30);
 
 				helper.register(name, block);
 				BLOCKS.put(color, block);
