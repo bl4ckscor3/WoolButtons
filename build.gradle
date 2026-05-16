@@ -6,7 +6,7 @@ subprojects {
     apply plugin: 'java'
 
     base {
-        archivesName = "${mod_id}-${project.path.substring(1)}-${minecraft_version}"
+        archivesName = "woolbuttons-${project.path.substring(1)}-${minecraft_version}"
     }
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(java_version)
