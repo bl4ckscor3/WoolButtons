@@ -1,0 +1,22 @@
+{
+    "block.sbmwoolbuttons.wool_button_white": "White Wool Button",
+    "block.sbmwoolbuttons.wool_button_orange": "Orange Wool Button",
+    "block.sbmwoolbuttons.wool_button_magenta": "Magenta Wool Button",
+    "block.sbmwoolbuttons.wool_button_light_blue": "Light Blue Wool Button",
+    "block.sbmwoolbuttons.wool_button_yellow": "Yellow Wool Button",
+    "block.sbmwoolbuttons.wool_button_lime": "Lime Wool Button",
+    "block.sbmwoolbuttons.wool_button_pink": "Pink Wool Button",
+    "block.sbmwoolbuttons.wool_button_gray": "Gray Wool Button",
+    "block.sbmwoolbuttons.wool_button_light_gray": "Light Gray Wool Button",
+    "block.sbmwoolbuttons.wool_button_cyan": "Cyan Wool Button",
+    "block.sbmwoolbuttons.wool_button_purple": "Purple Wool Button",
+    "block.sbmwoolbuttons.wool_button_blue": "Blue Wool Button",
+    "block.sbmwoolbuttons.wool_button_brown": "Brown Wool Button",
+    "block.sbmwoolbuttons.wool_button_green": "Green Wool Button",
+    "block.sbmwoolbuttons.wool_button_red": "Red Wool Button",
+    "block.sbmwoolbuttons.wool_button_black": "Black Wool Button",
+    "sbmwoolbuttons.configuration.make_sound": "Make sound",
+    "sbmwoolbuttons.configuration.make_sound.tooltip": "Enable to have wool buttons make a sound when pressed.",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors": "Trigger sculk sensors",
+    "sbmwoolbuttons.configuration.trigger_sculk_sensors.tooltip": "Enable to have pressing wool buttons trigger sculk sensors. If you want placing and breaking them to trigger sculk sensors, you need to remove the buttons from the minecraft:dampens_vibrations block tag."
+}
