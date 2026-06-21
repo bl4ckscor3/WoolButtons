@@ -3,6 +3,10 @@ package bl4ckscor3.mod.sbmwoolbuttons;
 import java.util.List;
 import java.util.stream.Stream;
 
+import bl4ckscor3.mod.sbmwoolbuttons.lib.Platform;
+import bl4ckscor3.mod.sbmwoolbuttons.lib.RegisteredBlock;
+import bl4ckscor3.mod.sbmwoolbuttons.lib.RegisteredItem;
+import bl4ckscor3.mod.sbmwoolbuttons.lib.RegistryObject;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.Identifier;
@@ -23,20 +27,14 @@ public class WoolButtons {
 		Identifier base = Identifier.fromNamespaceAndPath(MODID, "wool_button_" + color);
 		return BlockItemId.create(base, base);
 	});
-	public static final ColorCollection<RegistryObject<WoolButtonBlock>> BLOCKS = IDS.map(
-		id -> RegistryObject.block(
+	public static final ColorCollection<RegisteredBlock<WoolButtonBlock>> BLOCKS = IDS.map(
+		id -> RegisteredBlock.create(
 			id.block().identifier().getPath(),
 			p -> new WoolButtonBlock(p, WOOL_BUTTON_BLOCK_SET_TYPE, 30),
 			() -> BlockBehaviour.Properties.of().noCollision().strength(0.5F)
 		)
 	);
-	public static final ColorCollection<RegistryObject<BlockItem>> ITEMS = ColorCollection.zipMap(IDS, BLOCKS,
-		(id, block) -> RegistryObject.blockItem(
-			id.item().identifier().getPath(),
-			p -> new BlockItem(block.get(), p),
-			Item.Properties::new
-		)
-	);
+	public static final ColorCollection<RegisteredItem<BlockItem>> ITEMS = BLOCKS.map(block -> RegisteredItem.blockItem(block, Item.Properties::new));
 
 	public synchronized static void initialize(Platform platform) {
 		if (WoolButtons.platform != null) {
