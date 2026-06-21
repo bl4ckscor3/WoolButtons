@@ -2,7 +2,6 @@ package bl4ckscor3.mod.sbmwoolbuttons.datagen;
 
 import java.util.Set;
 
-import bl4ckscor3.mod.sbmwoolbuttons.RegistryObject;
 import bl4ckscor3.mod.sbmwoolbuttons.WoolButtons;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -15,6 +14,6 @@ public class BlockLootTableGenerator extends BlockLootSubProvider {
 
 	@Override
 	public void generate() {
-		WoolButtons.BLOCKS.values().stream().map(RegistryObject::get).forEach(this::dropSelf);
+		WoolButtons.BLOCKS.forEach(block -> dropSelf(block.get()));
 	}
 }

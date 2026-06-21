@@ -1,6 +1,5 @@
 package bl4ckscor3.mod.sbmwoolbuttons.datagen;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import bl4ckscor3.mod.sbmwoolbuttons.RegistryObject;
@@ -17,6 +16,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.ColorCollection;
 
 public class RecipeGenerator extends RecipeProvider {
 	private final HolderGetter<Item> items;
@@ -28,58 +28,22 @@ public class RecipeGenerator extends RecipeProvider {
 
 	@Override
 	public final void buildRecipes() {
-		List<Item> woolColors = List.of(
-			Items.WHITE_WOOL,
-			Items.LIGHT_GRAY_WOOL,
-			Items.GRAY_WOOL,
-			Items.BLACK_WOOL,
-			Items.BROWN_WOOL,
-			Items.RED_WOOL,
-			Items.ORANGE_WOOL,
-			Items.YELLOW_WOOL,
-			Items.LIME_WOOL,
-			Items.GREEN_WOOL,
-			Items.CYAN_WOOL,
-			Items.LIGHT_BLUE_WOOL,
-			Items.BLUE_WOOL,
-			Items.PURPLE_WOOL,
-			Items.MAGENTA_WOOL,
-			Items.PINK_WOOL);
-		List<Item> dyes = List.of(
-			Items.WHITE_DYE,
-			Items.LIGHT_GRAY_DYE,
-			Items.GRAY_DYE,
-			Items.BLACK_DYE,
-			Items.BROWN_DYE,
-			Items.RED_DYE,
-			Items.ORANGE_DYE,
-			Items.YELLOW_DYE,
-			Items.LIME_DYE,
-			Items.GREEN_DYE,
-			Items.CYAN_DYE,
-			Items.LIGHT_BLUE_DYE,
-			Items.BLUE_DYE,
-			Items.PURPLE_DYE,
-			Items.MAGENTA_DYE,
-			Items.PINK_DYE);
-		List<Item> buttons = List.copyOf(WoolButtons.ITEMS.values().stream().map(RegistryObject::get).toList());
-
-		for (int i = 0; i < buttons.size(); i++) {
-			Item dye = dyes.get(i);
-			Item button = buttons.get(i);
+		ColorCollection.VALUES.forEach(color -> {
+			Item dye = Items.DYE.pick(color);
+			Item button = WoolButtons.ITEMS.pick(color).get();
 
 			ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, button)
 				.group("wool_buttons")
-				.requires(woolColors.get(i))
+				.requires(Items.WOOL.pick(color))
 				.unlockedBy("has_wool", has(ItemTags.WOOL))
 				.save(output);
 			ShapelessRecipeBuilder.shapeless(items, RecipeCategory.BUILDING_BLOCKS, button)
 				.group("wool_buttons")
 				.requires(dye)
-				.requires(Ingredient.of(buttons.stream().filter(check -> !check.equals(button))))
+				.requires(Ingredient.of(WoolButtons.ITEMS.asList().stream().map(RegistryObject::get).filter(check -> !check.equals(button))))
 				.unlockedBy("has_needed_dye", has(dye))
 				.save(output, WoolButtons.MODID + ":dye_" + getItemName(button));
-		}
+		});
 	}
 
 	public static final class Runner extends RecipeProvider.Runner {

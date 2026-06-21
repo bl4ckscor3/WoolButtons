@@ -34,9 +34,9 @@ public class NeoEntrypoint implements Platform {
 	@SubscribeEvent
 	public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
-			event.insertAfter(new ItemStack(Items.STONE_BUTTON), new ItemStack(WoolButtons.ITEMS.get(WoolButtons.Color.WHITE).get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+			event.insertAfter(new ItemStack(Items.STONE_BUTTON), new ItemStack(WoolButtons.ITEMS.white().get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 		else if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
-			event.acceptAll(WoolButtons.ITEMS.values().stream().map(RegistryObject::get).map(ItemStack::new).toList());
+			event.acceptAll(WoolButtons.gameplayColorOrderItems().map(ItemStack::new).toList());
 	}
 
 	@Override
