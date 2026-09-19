@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "sbmwoolbuttons:wool_button_pink"
+        "recipes": "sbmwoolbuttons:wool_button_pink"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

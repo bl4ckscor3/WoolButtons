@@ -54,7 +54,7 @@ public class WoolButtonBlock extends ButtonBlock {
 		}
 
 		if (isArrowNotNull)
-			level.scheduleTick(new BlockPos(pos), this, ticksToStayPressed);
+			level.scheduleTick(pos, this, ticksToStayPressed);
 	}
 
 	@Override

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "sbmwoolbuttons:dye_wool_button_light_blue"
+        "recipes": "sbmwoolbuttons:dye_wool_button_light_blue"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

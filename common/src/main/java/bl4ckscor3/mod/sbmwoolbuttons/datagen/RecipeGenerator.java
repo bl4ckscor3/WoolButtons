@@ -1,29 +1,27 @@
 package bl4ckscor3.mod.sbmwoolbuttons.datagen;
 
-import java.util.concurrent.CompletableFuture;
-
 import bl4ckscor3.mod.sbmwoolbuttons.WoolButtons;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ColorCollection;
 
 public class RecipeGenerator extends RecipeProvider {
 	private final HolderGetter<Item> items;
 
-	public RecipeGenerator(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-		super(lookupProvider, output);
-		items = lookupProvider.lookupOrThrow(Registries.ITEM);
+	public RecipeGenerator(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+		super(recipeOutput, advancementOutput);
+		items = recipeOutput.lookup(Registries.ITEM);
 	}
 
 	@Override
@@ -44,21 +42,5 @@ public class RecipeGenerator extends RecipeProvider {
 				.unlockedBy("has_needed_dye", has(dye))
 				.save(output, WoolButtons.MODID + ":dye_" + getItemName(button));
 		});
-	}
-
-	public static final class Runner extends RecipeProvider.Runner {
-		public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-			super(output, lookupProvider);
-		}
-
-		@Override
-		protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-			return new RecipeGenerator(lookupProvider, output);
-		}
-
-		@Override
-		public String getName() {
-			return "Wool Buttons recipes";
-		}
 	}
 }
